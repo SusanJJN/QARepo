@@ -47,7 +47,7 @@ python main.py repo_dir=D:\test2 output_file=example.json repo_des="当前代码
 ```
 
 # Qwen模型微调
-Qwen模型的微调是在AutoDL平台上完成，使用官方镜像https://www.codewithgpu.com/i/datawhalechina/self-llm/Qwen2.5-self-llm，相关代码存在Qwen2-7B-Lora.ipynb中，训练使用的示例example.json也已上传。
+Qwen模型的微调是在AutoDL平台上完成，使用官方镜像<https://www.codewithgpu.com/i/datawhalechina/self-llm/Qwen2.5-self-llm>，相关代码存在Qwen2-7B-Lora.ipynb中，训练使用的示例example.json也已上传。
 
 由于算力有限，微调使用的训练数据中删除了'input'字段中的'function_list'字段的'code'字段。notebook中保留了对两种场景提问的推理答案。由于微调数据量有限，所以推理效果欠佳。
 
