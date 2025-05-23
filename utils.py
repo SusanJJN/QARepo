@@ -14,7 +14,7 @@ VALID_EXTENSIONS = {
 
 # 新增配置常量
 API_CONFIG = {
-    "api_key": "sk-794f6267bec14acd96885744e287606a",
+    "api_key": "your-deepseek-key",
     "base_url": "https://api.deepseek.com",
     "model": "deepseek-chat",
 }
