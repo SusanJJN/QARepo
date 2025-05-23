@@ -12,7 +12,7 @@
 1. 针对场景1，使用DeepSeek的API生成n种不同含义相同句式不同的问句，以保证该场景下问题的多样性。
 2. 针对场景2，使用DeepSeek的API生成多种潜在的需求，以保证该场景下问答对的多样性。
 
-# 使用方法：
+# 使用方法
 1. 安装依赖库：pip install -r requirements.txt
 2. 在main.py中修改DeepSeek的密钥，第17行"api_key"="your_deepseek_key"
 3. 运行main.py，如： 
