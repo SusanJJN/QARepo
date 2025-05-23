@@ -14,7 +14,7 @@ VALID_EXTENSIONS = {
 
 # 新增配置常量
 API_CONFIG = {
-    "api_key": "your-deepseek-key",
+    "api_key": "sk-794f6267bec14acd96885744e287606a",
     "base_url": "https://api.deepseek.com",
     "model": "deepseek-chat",
 }
@@ -48,7 +48,7 @@ def init_parser(language):
         raise
 
 # 修改后的parse_functions函数
-def parse_functions(file_path, repo_path):
+def parse_functions(file_path, repo_path, question_num=10):
     """解析文件并提取函数信息（支持多语言）
     Args:
         file_path: 绝对文件路径
@@ -78,15 +78,15 @@ def parse_functions(file_path, repo_path):
             
         # 根据不同语言使用不同解析方式
         if lang == 'python':
-            return parse_python_functions(file_path, repo_path)
+            return parse_python_functions(file_path, repo_path, question_num)
         else:
-            return parse_tree_sitter_functions(file_path, repo_path, lang)
+            return parse_tree_sitter_functions(file_path, repo_path, lang, question_num)
     except Exception as e:
         print(f"解析文件 {file_path} 失败：{str(e)}")
     return functions
 
 # 新增通用解析函数
-def parse_tree_sitter_functions(file_path, repo_path, lang):
+def parse_tree_sitter_functions(file_path, repo_path, lang, question_num=10):
     """使用Tree-sitter解析非Python语言文件提取函数信息
     Args:
         file_path: 绝对文件路径
@@ -140,7 +140,7 @@ def parse_tree_sitter_functions(file_path, repo_path, lang):
             }
             
             print(f"正在处理函数：{func_name}")
-            func_info["metadata"] = generate_function_metadata(func_name, func_code)
+            func_info["metadata"] = generate_function_metadata(func_name, func_code, question_num)
             sleep(1.5)
             
             functions.append(func_info)
@@ -282,7 +282,7 @@ def generate_requirement_metadata(func_info, requirement_num=3):
             "logic_steps": ["自动生成逻辑步骤（详见代码实现）"]
         }
 
-def parse_python_functions(file_path, repo_path):
+def parse_python_functions(file_path, repo_path, question_num=10):
     """解析Python文件并提取函数元数据
     Args:
         file_path: 待解析文件的绝对路径
@@ -315,7 +315,7 @@ def parse_python_functions(file_path, repo_path):
                 
                 # 调用GPT生成元数据
                 print(f"正在处理函数：{node.name}")
-                func_info["metadata"] = generate_function_metadata(node.name, func_code)
+                func_info["metadata"] = generate_function_metadata(node.name, func_code, question_num)
                 sleep(1.5)  # 控制请求频率
                 
                 functions.append(func_info)
@@ -383,7 +383,7 @@ def generate_qa_pair2(requirements):
 
     }
 
-def generate_training_data(repo_dir, output_file, repository_description=''):
+def generate_training_data(repo_dir, output_file, repository_description='', question_num=10, requirement_num=3):
     """生成代码仓训练数据集的主流程
     Args:
         repo_dir: 代码仓根目录路径
@@ -407,7 +407,7 @@ def generate_training_data(repo_dir, output_file, repository_description=''):
             if ext not in VALID_EXTENSIONS:
                 continue
                 
-            for func in parse_functions(file_path, repo_dir):
+            for func in parse_functions(file_path, repo_dir, question_num):
                 filtered_func = {
                     **func,
                     "code": "",
@@ -422,7 +422,7 @@ def generate_training_data(repo_dir, output_file, repository_description=''):
                 qa_pairs = generate_qa_pair(func)
                 qa_data.extend(qa_pairs)
                 
-                requirements = generate_requirement_metadata(func)
+                requirements = generate_requirement_metadata(func, requirement_num)
                 for req in requirements:
                     qa_data.append(generate_qa_pair2(req))
 
