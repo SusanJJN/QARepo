@@ -8,17 +8,19 @@
 
 repo_dir是本地代码仓的路径，output_file是生成json文件的路径，repo_des是代码仓的描述。
 4. 等待生成完成，生成的问答对会以存储在output_file中，每一个问答对的格式如下：（覆盖两个场景）
+```python
 {
     'instruction':生成的问题,
     'input'：{
         'function_list':[func_dict1,func_dict2,...], #代码仓中所有函数信息的字典列表
         'repository_description':输入的代码仓描述
-
-    }，该字段会以字符串形式存储，这里为了方便展示，用字典表示
+    }，#该字段会以字符串形式存储，这里为了方便展示，用字典表示
     'output':生成的答案
 }
+```
 
 其中func_dict的格式如下：
+```python
 {
     'name':函数名
     'code':函数代码段，
@@ -28,11 +30,10 @@ repo_dir是本地代码仓的路径，output_file是生成json文件的路径，
         'logic_steps':函数逻辑步骤，
     }
 }
+```
 
 # Qwen模型微调
 Qwen模型的微调是在AutoDL平台上完成，使用官方镜像https://www.codewithgpu.com/i/datawhalechina/self-llm/Qwen2.5-self-llm，相关代码存在Qwen2-7B-Lora.ipynb中
 
-由于算力有限，微调使用的训练数据中删除了'input'字段中的'function_list'字段的'code'字段。notebook中保留了对两种场景提问的推理答案。如图所示：
-
-![image](URL_ADDRESS![image](https://github.com/)
+由于算力有限，微调使用的训练数据中删除了'input'字段中的'function_list'字段的'code'字段。notebook中保留了对两种场景提问的推理答案。
 
