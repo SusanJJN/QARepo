@@ -12,14 +12,14 @@
 1. 针对场景1，使用DeepSeek的API生成n种不同含义相同句式不同的问句，以保证该场景下问题的多样性。
 2. 针对场景2，使用DeepSeek的API生成多种潜在的需求，以保证该场景下问答对的多样性。
 
-# 使用方法
+# 使用方法：
 1. 安装依赖库：pip install -r requirements.txt
 2. 在main.py中修改DeepSeek的密钥，第17行"api_key"="your_deepseek_key"
 3. 运行main.py，如： 
 ```python
-python main.py repo_dir=D:\test2 output_file=example.json repo_des="当前代码仓是一个Python项目，实现了对分割模型的训练。"
+python main.py repo_dir=D:\test2 output_file=example.json repo_des="当前代码仓是一个Python项目，实现了对分割模型的训练。" question_num=10 requirement_num=3
 ```
-其中，repo_dir是本地代码仓的路径，output_file是生成json文件的路径，repo_des是代码仓的描述。
+其中，repo_dir是本地代码仓的路径，output_file是生成json文件的路径，repo_des是代码仓的描述，question_num是针对场景1每个函数生成的问题数量，requirement_num是针对场景2提出的需求问题数量。这里使用了我本地构建的一个简单代码仓进行测试，生成的数据为example.json。
 
 4. 等待生成完成，生成的问答对会以存储在output_file中，每一个问答对的格式如下：（覆盖两个场景）
 ```python
