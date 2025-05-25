@@ -54,12 +54,18 @@ Qwen模型的微调是在AutoDL平台上完成，使用官方镜像<https://www.
 # DEMO
 Step 1: Data Generating
 
+使用本地构建的一个简单python代码仓进行测试
+
 ![数据生成演示视频](./数据生成.gif)
 
 Step 2: Qwen Training
 
+于AutoDL平台上完成，使用NVIDIA 4090 24G 进行训练，为了节省演示时间，这里只设置训练10个epoch
+
 ![模型训练演示视频](./模型训练.gif)
 
 Step 3: Qwen Inference
+
+这里借用预训练的300轮模型进行推理，可见场景1下的答案符合要求，而场景2下的答案仍欠佳，主要问题仍在于微调使用的数据量较少，模型仍欠拟合。
 
 ![模型推理演示视频](./模型推理.gif)
