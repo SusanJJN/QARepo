@@ -46,6 +46,27 @@ python main.py repo_dir=D:\test2 output_file=example.json repo_des="当前代码
 }
 ```
 
+场景1下output的格式如下：
+```python
+xx的实现方式：
+• 实现函数：
+• 文件位置：
+• 实现步骤：
+1. 
+2. 
+...
+• 完整代码：
+...
+```
+场景2下output的格式如下：
+```python
+xx的实现方式：需求实现的大致描述
+实现步骤：
+1.
+2.
+...
+```
+
 # Qwen模型微调
 Qwen模型的微调是在AutoDL平台上完成，使用官方镜像<https://www.codewithgpu.com/i/datawhalechina/self-llm/Qwen2.5-self-llm>，相关代码存在Qwen2-7B-Lora.ipynb中，训练使用的示例example.json也已上传。
 
