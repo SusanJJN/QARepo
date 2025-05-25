@@ -53,6 +53,5 @@ Qwen模型的微调是在AutoDL平台上完成，使用官方镜像<https://www.
 
 # DEMO
 Step 1: Data Generating
-<video width="320" height="240" controls>
-    <source src="数据生成.mp4" type="video/mp4">
-</video>
+
+![数据生成演示视频](./数据生成.gif)
