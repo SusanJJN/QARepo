@@ -51,3 +51,8 @@ Qwen模型的微调是在AutoDL平台上完成，使用官方镜像<https://www.
 
 由于算力有限，微调使用的训练数据中删除了'input'字段中的'function_list'字段的'code'字段。notebook中保留了对两种场景提问的推理答案。由于微调数据量有限，所以推理效果欠佳。
 
+# DEMO
+Step 1: Data Generating
+<video width="320" height="240" controls>
+    <source src="数据生成.mp4" type="video/mp4">
+</video>
