@@ -55,3 +55,11 @@ Qwen模型的微调是在AutoDL平台上完成，使用官方镜像<https://www.
 Step 1: Data Generating
 
 ![数据生成演示视频](./数据生成.gif)
+
+Step 2: Qwen Training
+
+![模型训练演示视频](./模型训练.gif)
+
+Step 3: Qwen Inference
+
+![模型推理演示视频](./模型推理.gif)
